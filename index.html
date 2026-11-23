@@ -1,0 +1,335 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Collaborative Care Model (CoCM) | Institute for Integrated Behavioral Health | ETSU</title>
+<meta name="description" content="How to deliver and bill the Collaborative Care Model with fidelity: billing codes, registries, and psychiatric consultation, from ETSU's two-year pilot with BlueCross BlueShield of Tennessee.">
+<meta name="theme-color" content="#00053E">
+<meta name="color-scheme" content="light dark">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Merriweather:wght@700&family=Roboto:wght@400;500;700&display=swap">
+<!--
+  Mockup of a single page for the Institute for Integrated Behavioral Health on the Quillen website.
+  In Modern Campus, the Quillen template supplies the ETSU header, navigation and footer, so the
+  slim .unit-bar below is for previewing only. Fonts and colors follow ETSU brand standards
+  (etsu.edu/brand/design.php): ETSU Blue #00053E, ETSU Gold #FFC72C, Bebas Neue / Merriweather / Roboto.
+  The page uses no scripts (Website Governance Policy 6.4).
+-->
+<style>
+:root {
+  --blue: #00053E;          /* ETSU Blue */
+  --gold: #FFC72C;          /* ETSU Gold */
+  --bg: #FFFFFF;
+  --band: #F4F5F8;
+  --ink: #1A1D2B;
+  --muted: #4A5063;
+  --line: #D9DCE4;
+  --link: #00053E;
+  --tint: #FFF6DC;
+  --on-blue: #FFFFFF;
+  --on-blue-muted: #D3D6E6;
+  --font-head: "Bebas Neue", "Arial Narrow", Arial, sans-serif;
+  --font-sub: "Merriweather", "Roboto Slab", Georgia, serif;
+  --font-body: "Roboto", Arial, sans-serif;
+  --radius: 8px;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0B0E1E; --band: #12162A; --ink: #E9EAF1; --muted: #B4B8C9;
+    --line: #2A3048; --link: #FFD966; --tint: #2A2614;
+  }
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 400 17px/1.65 var(--font-body); }
+a { color: var(--link); text-underline-offset: 3px; }
+a:focus-visible { outline: 3px solid var(--gold); outline-offset: 2px; border-radius: 3px; }
+h1, h2, h3 { margin: 0; text-wrap: balance; }
+h2 { font: 700 clamp(24px, 3vw, 30px)/1.25 var(--font-sub); color: var(--ink); }
+h3 { font: 700 18px/1.35 var(--font-sub); color: var(--ink); }
+p { margin: 0; }
+ul, ol { margin: 0; padding-left: 1.25em; display: grid; gap: 6px; }
+.wrap { max-width: 1040px; margin: 0 auto; padding-left: max(20px, env(safe-area-inset-left, 0px)); padding-right: max(20px, env(safe-area-inset-right, 0px)); }
+.prose { max-width: 68ch; }
+.skip { position: absolute; left: -9999px; top: 8px; z-index: 10; background: var(--gold); color: var(--blue); padding: 12px 18px; border-radius: var(--radius); font-weight: 700; }
+.skip:focus { left: 16px; }
+
+/* Preview-only unit bar (replaced by the Quillen template in Modern Campus) */
+.unit-bar { background: #FFFFFF; border-bottom: 4px solid var(--gold); }
+.unit-bar .wrap { padding-block: 14px; font: 500 15px/1.35 var(--font-body); color: #00053E; }
+.unit-bar b { font: 700 17px/1.3 var(--font-sub); display: block; }
+
+/* Hero */
+.hero { background: var(--blue); color: var(--on-blue); }
+.hero .wrap { padding-block: clamp(36px, 6vw, 64px); display: grid; gap: 18px; }
+.eyebrow { font: 700 13px/1.2 var(--font-body); letter-spacing: .12em; text-transform: uppercase; color: var(--gold); }
+.hero h1 { font: 400 clamp(44px, 7vw, 76px)/.98 var(--font-head); letter-spacing: .01em; }
+.hero h1 span { color: var(--gold); }
+.hero p { color: var(--on-blue-muted); font-size: clamp(17px, 1.6vw, 19px); max-width: 60ch; }
+.cta { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 6px; }
+.btn { display: inline-flex; align-items: center; min-height: 48px; padding: 0 22px; border-radius: 999px; font: 700 16px/1 var(--font-body); text-decoration: none; border: 2px solid transparent; }
+.btn.primary { background: var(--gold); color: var(--blue); }
+.btn.ghost { color: #FFFFFF; border-color: rgba(255,255,255,.5); }
+.btn:focus-visible { outline: 3px solid #FFFFFF; outline-offset: 3px; }
+
+/* On this page */
+.onpage { border-bottom: 1px solid var(--line); }
+.onpage .wrap { padding-block: 12px; display: flex; flex-wrap: wrap; align-items: center; gap: 8px 10px; }
+.onpage strong { font-size: 14px; color: var(--muted); margin-right: 4px; }
+.onpage a { display: inline-flex; align-items: center; min-height: 44px; padding: 0 16px; border: 1px solid var(--line); border-radius: 999px; text-decoration: none; font-weight: 500; font-size: 15px; color: var(--ink); }
+.onpage a:hover { border-color: var(--blue); }
+
+/* Sections */
+section { padding-block: clamp(36px, 5vw, 56px); scroll-margin-top: 8px; }
+section + section { border-top: 1px solid var(--line); }
+.section-head { display: grid; gap: 8px; margin-bottom: 22px; }
+.section-head p { color: var(--muted); max-width: 68ch; }
+.cols { display: grid; gap: 28px; }
+@media (min-width: 48em) { .cols { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); } }
+.stack { display: grid; gap: 12px; align-content: start; min-width: 0; }
+
+/* Partnership */
+.partner { background: var(--band); }
+.partner .wrap { display: grid; gap: 22px; align-items: center; }
+@media (min-width: 48em) { .partner .wrap { grid-template-columns: 260px minmax(0, 1fr); gap: 40px; } }
+.partner-logo { background: #FFFFFF; border: 1px solid var(--line); border-radius: var(--radius); padding: 28px 24px; display: grid; place-items: center; }
+.partner-logo img { display: block; width: 100%; max-width: 212px; height: auto; }
+
+/* Table */
+.table-wrap { min-width: 0; }
+table { width: 100%; border-collapse: collapse; font-size: 16px; }
+caption { text-align: left; font: 700 18px/1.35 var(--font-sub); padding-bottom: 10px; }
+th, td { text-align: left; padding: 9px 10px; border-bottom: 1px solid var(--line); vertical-align: top; }
+thead th { font: 700 12.5px/1.3 var(--font-body); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+tbody th { font-weight: 500; white-space: nowrap; }
+tr.group th { background: var(--band); font: 700 13px/1.3 var(--font-body); letter-spacing: .06em; text-transform: uppercase; color: var(--muted); white-space: normal; }
+code { font: 500 15px/1 ui-monospace, Menlo, Consolas, monospace; white-space: nowrap; }
+@media (max-width: 26em) { th, td { padding: 8px 6px; } table { font-size: 15px; } code { font-size: 14px; } }
+.note { font-size: 15px; color: var(--muted); }
+.callout { background: var(--tint); border-left: 4px solid var(--gold); padding: 14px 16px; border-radius: 0 var(--radius) var(--radius) 0; font-size: 16px; }
+
+/* Accordions: used only for supporting detail */
+details { border: 1px solid var(--line); border-radius: var(--radius); margin-top: 22px; }
+summary { cursor: pointer; padding: 14px 16px; min-height: 48px; font: 700 16px/1.4 var(--font-body); }
+summary:focus-visible { outline: 3px solid var(--gold); outline-offset: 2px; }
+details > div { padding: 0 16px 16px; display: grid; gap: 12px; }
+.formula { font: 500 15px/1.5 ui-monospace, Menlo, Consolas, monospace; background: var(--band); padding: 8px 10px; border-radius: 6px; }
+.options { display: grid; gap: 12px; }
+@media (min-width: 48em) { .options { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); } }
+.options div { border-top: 3px solid var(--blue); padding-top: 8px; font-size: 15.5px; }
+.options b { display: block; }
+
+/* FAQ, visible */
+.qa { display: grid; gap: 22px; }
+@media (min-width: 48em) { .qa { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 26px 40px; } }
+.qa div { display: grid; gap: 6px; }
+
+/* Contact */
+.contact { background: var(--blue); color: var(--on-blue); }
+.contact h2 { color: #FFFFFF; }
+.contact p { color: var(--on-blue-muted); max-width: 60ch; }
+.contact a { color: var(--gold); }
+.contact .card { margin-top: 18px; display: grid; gap: 4px; }
+.contact .who { font: 700 19px/1.3 var(--font-sub); color: #FFFFFF; }
+.fine { font-size: 14.5px; color: var(--muted); display: grid; gap: 8px; }
+.fine strong { color: var(--ink); }
+
+@media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+@media print {
+  .skip, .onpage, .cta { display: none !important; }
+  body { font-size: 11pt; background: #fff; color: #000; }
+  .hero, .contact { background: #fff !important; color: #000 !important; }
+  .hero *, .contact * { color: #000 !important; }
+  details > div { display: grid !important; }
+  table, .options div, .qa div { break-inside: avoid; }
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#content">Skip to main content</a>
+
+<div class="unit-bar" role="banner">
+  <div class="wrap"><b>Institute for Integrated Behavioral Health</b>Quillen College of Medicine · East Tennessee State University</div>
+</div>
+
+<main id="content">
+  <div class="hero">
+    <div class="wrap">
+      <p class="eyebrow">Collaborative Care Model (CoCM)</p>
+      <h1>Collaborative care, <span>done right,</span> for Tennessee patients</h1>
+      <p>This page shows primary care practices how to deliver the Collaborative Care Model with fidelity and bill for it correctly. It draws on our two-year pilot with BlueCross BlueShield of Tennessee.</p>
+      <div class="cta">
+        <a class="btn primary" href="#billing">See the billing codes</a>
+        <a class="btn ghost" href="#contact">Request the full guide</a>
+      </div>
+    </div>
+  </div>
+
+  <nav class="onpage" aria-label="On this page">
+    <div class="wrap">
+      <strong>On this page:</strong>
+      <a href="#partnership">Partnership</a>
+      <a href="#billing">Billing</a>
+      <a href="#registry">Registry</a>
+      <a href="#psychiatry">Psychiatry</a>
+      <a href="#questions">Questions</a>
+      <a href="#contact">Full guide</a>
+    </div>
+  </nav>
+
+  <section class="partner" id="partnership" aria-labelledby="partnerTitle">
+    <div class="wrap">
+      <div class="partner-logo">
+        <img src="data:image/png;base64,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" alt="BlueCross BlueShield of Tennessee" width="318" height="64">
+      </div>
+      <div class="stack prose">
+        <h2 id="partnerTitle">A partnership with BlueCross BlueShield of Tennessee</h2>
+        <p>Over two years, the Institute for Integrated Behavioral Health ran a Collaborative Care Model pilot in an ETSU pediatric clinic in partnership with BlueCross BlueShield of Tennessee (BCBST). BCBST supported the pilot to learn how CoCM and its billing codes work in Tennessee primary care, and is helping share what we learned with providers.</p>
+        <p>BCBST covers the CoCM codes, and a 2025 Tennessee law requires all third-party payers to reimburse them. Coverage helps patients only when the model is delivered as designed, which is what this page is for.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="billing" aria-labelledby="billingTitle">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 id="billingTitle">Billing for the CoCM codes</h2>
+        <p>CoCM is billed once per calendar month, based on the total time the care team spends on a patient’s collaborative care across all contacts.</p>
+      </div>
+      <div class="cols">
+        <div class="table-wrap">
+          <table>
+            <caption>Codes by total CoCM time per month</caption>
+            <thead><tr><th scope="col">Time / month</th><th scope="col">Base</th><th scope="col">Add-on</th></tr></thead>
+            <tbody>
+              <tr class="group"><th scope="rowgroup" colspan="3">Initial month</th></tr>
+              <tr><th scope="row">36–85 min</th><td><code>99492</code></td><td>None</td></tr>
+              <tr><th scope="row">86–115 min</th><td><code>99492</code></td><td><code>99494</code> ×1</td></tr>
+              <tr><th scope="row">116–145 min</th><td><code>99492</code></td><td><code>99494</code> ×2</td></tr>
+              <tr class="group"><th scope="rowgroup" colspan="3">Subsequent months</th></tr>
+              <tr><th scope="row">31–75 min</th><td><code>99493</code></td><td>None</td></tr>
+              <tr><th scope="row">76–105 min</th><td><code>99493</code></td><td><code>99494</code> ×1</td></tr>
+              <tr><th scope="row">106–135 min</th><td><code>99493</code></td><td><code>99494</code> ×2</td></tr>
+              <tr class="group"><th scope="rowgroup" colspan="3">Shorter month</th></tr>
+              <tr><th scope="row">30 min</th><td><code>G2214</code></td><td>None</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="stack">
+          <h3>Getting it right</h3>
+          <ul>
+            <li>Track each patient’s CoCM time per calendar month as it happens.</li>
+            <li>Document the activities behind the time: outreach, follow-up, registry updates, and caseload review with the psychiatric consultant.</li>
+            <li>Confirm eligible billing practitioners and limits on billing other services in the same month.</li>
+            <li>Before you scale, send 8–10 sample claims to BCBST for feedback.</li>
+          </ul>
+          <p class="note">G2214 applies when the base-code time isn’t reached; verify payer rules. Last reviewed <time datetime="2026-11">November 2026</time>. Coding and payment rules change, so confirm current requirements with BCBST and CMS before billing.</p>
+        </div>
+      </div>
+      <details>
+        <summary>Planning for sustainability</summary>
+        <div>
+          <p>Expected revenue and break-even volume help you plan staffing:</p>
+          <p class="formula">Expected revenue = Billable service volume × Expected payment per service</p>
+          <p class="formula">Break-even volume = Total program cost ÷ Average net revenue per billable episode</p>
+          <p class="note">Adjust for payer mix, denials, and collection rates. Costs include care manager and psychiatric consultant time, admin support, registry or technology, and training.</p>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <section id="registry" aria-labelledby="registryTitle">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 id="registryTitle">Implementing a registry</h2>
+        <p>The registry keeps every enrolled patient in view so the team can spot those who aren’t improving. It doesn’t have to be fancy, but it has to be used.</p>
+      </div>
+      <div class="cols">
+        <div class="stack">
+          <h3>At minimum, a registry should</h3>
+          <ul>
+            <li>List every patient enrolled in CoCM.</li>
+            <li>Track measures (such as the PHQ-9 or GAD-7) and follow-up over time.</li>
+            <li>Flag patients who disengage or aren’t improving as expected.</li>
+            <li>Support caseload review with the psychiatric consultant.</li>
+          </ul>
+        </div>
+        <div class="stack">
+          <h3>In our pilot</h3>
+          <p>We built the registry in REDCap during an EHR transition. It tracked CoCM time, follow-up, psychiatric consultation, safety planning, and measures including the PHQ-A and GAD-7.</p>
+          <p class="callout">Recording CoCM time in the registry shows when a patient crosses a billing threshold for the month.</p>
+        </div>
+      </div>
+      <details>
+        <summary>Compare registry options</summary>
+        <div class="options">
+          <div><b>Spreadsheet</b> (secure Excel): low cost and easy to start; manual entry gets harder as volume grows.</div>
+          <div><b>Custom database</b> (REDCap): highly customizable; needs local setup, maintenance, and access management.</div>
+          <div><b>Purpose-built CoCM registry</b> (AIMS Caseload Tracker): designed for caseload review; may sit outside the EHR.</div>
+          <div><b>EHR-integrated</b> (Epic or another EHR): fits existing workflows; depends on local informatics support.</div>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <section id="psychiatry" aria-labelledby="psychTitle">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 id="psychTitle">Engaging psychiatry</h2>
+        <p>The psychiatric consultant reviews the whole caseload with the care manager instead of seeing every patient, so one psychiatrist’s expertise reaches many more people. The primary care clinician (PCP) stays responsible for care and prescribing.</p>
+      </div>
+      <div class="cols">
+        <div class="stack">
+          <h3>Plan these before you start</h3>
+          <ol>
+            <li><b>Consultant:</b> expertise that fits your population, with protected time.</li>
+            <li><b>Rhythm:</b> a predictable meeting schedule and format.</li>
+            <li><b>Priorities:</b> use the registry to bring forward new patients and those not improving.</li>
+            <li><b>Follow-through:</b> how recommendations are documented and reach the PCP.</li>
+            <li><b>Coverage:</b> who reviews cases when the consultant is away.</li>
+          </ol>
+        </div>
+        <div class="stack">
+          <h3>In our pilot</h3>
+          <p>A psychiatrist with child and adolescent expertise met weekly with the behavioral health care manager (BHCM) for a one-hour, HIPAA-compliant video review. Physicians joined to present their patients when they could.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="questions" aria-labelledby="qTitle">
+    <div class="wrap">
+      <div class="section-head"><h2 id="qTitle">Common questions</h2></div>
+      <div class="qa">
+        <div><h3>Which conditions should we start with?</h3><p>Start small. Many practices begin with depression, using the PHQ-9 to measure progress, and expand once workflows are solid.</p></div>
+        <div><h3>Can follow-up happen by phone or telehealth?</h3><p>Yes, and regular contact with the care manager drives improvement. Use only the channels your organization approves.</p></div>
+        <div><h3>What training does the team need?</h3><p>Everyone should learn CoCM workflows. Care managers typically complete <a href="https://aims.uw.edu/">AIMS Center</a> training; our pilot also used the Meadows Collaborative Care Training Hub.</p></div>
+        <div><h3>How will we know it’s working?</h3><p>Track how many eligible patients are screened, referred, and enrolled, and follow each patient’s symptom scores over time, not just the average.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact" id="contact" aria-labelledby="contactTitle">
+    <div class="wrap">
+      <h2 id="contactTitle">Request the full implementation guide</h2>
+      <p>The complete guide covers every phase of implementation (Explore, Prepare, Implement, Sustain) with workflows, readiness tools, quality measures, and lessons from our pilot.</p>
+      <!-- If BCBST publishes the detailed guide as a webpage (not a PDF), add the link here. -->
+      <div class="card">
+        <span class="who">Jodi Polaha, PhD</span>
+        <span>East Tennessee State University</span>
+        <a href="mailto:polaha@etsu.edu">polaha@etsu.edu</a>
+        <p style="font-size:14.5px">Please don’t include patient health information in email.</p>
+      </div>
+    </div>
+  </section>
+
+  <section aria-label="About this page">
+    <div class="wrap fine">
+      <p><strong>In a crisis?</strong> Call or text <a href="tel:988">988</a>, or chat at <a href="https://988lifeline.org">988lifeline.org</a>. In an emergency, call 911.</p>
+      <p>This resource is for educational purposes and does not replace professional judgment, payer policy, or legal advice. Last reviewed <time datetime="2026-11">November 2026</time>.</p>
+    </div>
+  </section>
+</main>
+</body>
+</html>
