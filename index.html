@@ -2,334 +2,729 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Collaborative Care Model (CoCM) | Institute for Integrated Behavioral Health | ETSU</title>
-<meta name="description" content="How to deliver and bill the Collaborative Care Model with fidelity: billing codes, registries, and psychiatric consultation, from ETSU's two-year pilot with BlueCross BlueShield of Tennessee.">
-<meta name="theme-color" content="#00053E">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Collaborative Care in Tennessee</title>
+<meta name="description" content="A practical guide to implementing the Collaborative Care Model (CoCM) with fidelity, from the ETSU Institute for Integrated Behavioral Health and BlueCross BlueShield of Tennessee.">
+<meta name="theme-color" content="#041E42">
 <meta name="color-scheme" content="light dark">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Collaborative Care in Tennessee">
+<meta property="og:description" content="Bill the CoCM codes correctly, build a registry, and bring psychiatry into the team: practical steps from the ETSU–BCBST implementation guide.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23041E42'/%3E%3Ctext x='32' y='43' font-size='26' font-family='Georgia,serif' font-weight='700' text-anchor='middle' fill='%23FFC72C'%3ECC%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Merriweather:wght@700&family=Roboto:wght@400;500;700&display=swap">
-<!--
-  Mockup of a single page for the Institute for Integrated Behavioral Health on the Quillen website.
-  In Modern Campus, the Quillen template supplies the ETSU header, navigation and footer, so the
-  slim .unit-bar below is for previewing only. Fonts and colors follow ETSU brand standards
-  (etsu.edu/brand/design.php): ETSU Blue #00053E, ETSU Gold #FFC72C, Bebas Neue / Merriweather / Roboto.
-  The page uses no scripts (Website Governance Policy 6.4).
--->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:opsz,wght@7..72,500;7..72,600;7..72,700&family=Public+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500&display=swap">
 <style>
+/* Layout: co-branded navy masthead → mission → three pathway cards → short sections (billing, registry, psychiatry) → FAQ accordion → contact band */
 :root {
-  --blue: #00053E;          /* ETSU Blue */
-  --gold: #FFC72C;          /* ETSU Gold */
-  --bg: #FFFFFF;
-  --band: #F4F5F8;
-  --ink: #1A1D2B;
-  --muted: #4A5063;
-  --line: #D9DCE4;
-  --link: #00053E;
-  --tint: #FFF6DC;
-  --on-blue: #FFFFFF;
-  --on-blue-muted: #D3D6E6;
-  --font-head: "Bebas Neue", "Arial Narrow", Arial, sans-serif;
-  --font-sub: "Merriweather", "Roboto Slab", Georgia, serif;
-  --font-body: "Roboto", Arial, sans-serif;
-  --radius: 8px;
+  --navy: #041E42;          /* ETSU navy */
+  --gold: #FFC72C;          /* ETSU gold */
+  --blue: #0065B3;          /* BCBST blue */
+  --bg: #F5F7FA;
+  --surface: #FFFFFF;
+  --ink: #142033;
+  --muted: #4E5D72;
+  --line: #D9E0EA;
+  --tint: #E8F0F9;
+  --link: #0058A0;
+  --hero-ink: #FFFFFF;
+  --hero-muted: #C6D2E3;
+  --font-display: "Literata", Georgia, "Times New Roman", serif;
+  --font-body: "Public Sans", -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
+  --radius: 10px;
 }
 @media (prefers-color-scheme: dark) {
-  :root {
-    --bg: #0B0E1E; --band: #12162A; --ink: #E9EAF1; --muted: #B4B8C9;
-    --line: #2A3048; --link: #FFD966; --tint: #2A2614;
+  :root:not([data-theme="light"]) {
+    --bg: #0B1424; --surface: #121E33; --ink: #E7ECF4; --muted: #A3B1C6;
+    --line: #26354F; --tint: #17294A; --link: #7DB8F0; --blue: #4C9BE0;
+    color-scheme: dark;
   }
 }
+:root[data-theme="dark"] {
+  --bg: #0B1424; --surface: #121E33; --ink: #E7ECF4; --muted: #A3B1C6;
+  --line: #26354F; --tint: #17294A; --link: #7DB8F0; --blue: #4C9BE0;
+  color-scheme: dark;
+}
+
 * { box-sizing: border-box; }
-body { margin: 0; background: var(--bg); color: var(--ink); font: 400 17px/1.65 var(--font-body); }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition: none !important; } }
+body {
+  margin: 0; background: var(--bg); color: var(--ink);
+  font: 400 17px/1.65 var(--font-body);
+  -webkit-font-smoothing: antialiased;
+}
 a { color: var(--link); text-underline-offset: 3px; }
-a:focus-visible { outline: 3px solid var(--gold); outline-offset: 2px; border-radius: 3px; }
-h1, h2, h3 { margin: 0; text-wrap: balance; }
-h2 { font: 700 clamp(24px, 3vw, 30px)/1.25 var(--font-sub); color: var(--ink); }
-h3 { font: 700 18px/1.35 var(--font-sub); color: var(--ink); }
+a:focus-visible, button:focus-visible, summary:focus-visible, input:focus-visible, select:focus-visible {
+  outline: 3px solid var(--gold); outline-offset: 2px; border-radius: 4px;
+}
+h1, h2, h3 { font-family: var(--font-display); text-wrap: balance; line-height: 1.2; margin: 0; }
 p { margin: 0; }
-ul, ol { margin: 0; padding-left: 1.25em; display: grid; gap: 6px; }
-.wrap { max-width: 1040px; margin: 0 auto; padding-left: max(20px, env(safe-area-inset-left, 0px)); padding-right: max(20px, env(safe-area-inset-right, 0px)); }
-.prose { max-width: 68ch; }
-.skip { position: absolute; left: -9999px; top: 8px; z-index: 10; background: var(--gold); color: var(--blue); padding: 12px 18px; border-radius: var(--radius); font-weight: 700; }
-.skip:focus { left: 16px; }
+.wrap {
+  max-width: 1080px; margin: 0 auto;
+  padding-left: max(20px, env(safe-area-inset-left, 0px));
+  padding-right: max(20px, env(safe-area-inset-right, 0px));
+}
+.eyebrow {
+  font: 600 12.5px/1 var(--font-body); letter-spacing: .12em; text-transform: uppercase; color: var(--blue);
+}
 
-/* Preview-only unit bar (replaced by the Quillen template in Modern Campus) */
-.unit-bar { background: #FFFFFF; border-bottom: 4px solid var(--gold); }
-.unit-bar .wrap { padding-block: 14px; font: 500 15px/1.35 var(--font-body); color: #00053E; }
-.unit-bar b { font: 700 17px/1.3 var(--font-sub); display: block; }
+/* ---------- Masthead ---------- */
+.masthead { background: var(--navy); color: var(--hero-ink); border-top: 6px solid var(--gold); }
+.brandbar {
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 14px 28px;
+  padding-block: 18px; border-bottom: 1px solid rgba(255,255,255,.14);
+}
+.lockup { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 22px; }
+.mark { display: flex; align-items: center; gap: 10px; color: var(--hero-ink); text-decoration: none; }
+.mark .badge {
+  display: grid; place-items: center; width: 42px; height: 42px; border-radius: 8px;
+  font: 700 14px/1 var(--font-body); letter-spacing: .02em;
+}
+.mark.etsu .badge { background: var(--gold); color: var(--navy); }
+.mark.bcbs .badge { background: #0065B3; color: #fff; }
+.mark .name { font: 600 14px/1.25 var(--font-body); }
+.mark .name small { display: block; font-weight: 400; color: var(--hero-muted); font-size: 12.5px; }
+.lockup .x { color: var(--gold); font: 500 18px/1 var(--font-body); }
+.topnav { display: flex; flex-wrap: wrap; gap: 4px 18px; font-size: 14.5px; }
+.topnav a { color: var(--hero-muted); text-decoration: none; padding: 4px 0; }
+.topnav a:hover { color: #fff; text-decoration: underline; }
 
-/* Hero */
-.hero { background: var(--blue); color: var(--on-blue); }
-.hero .wrap { padding-block: clamp(36px, 6vw, 64px); display: grid; gap: 18px; }
-.eyebrow { font: 700 13px/1.2 var(--font-body); letter-spacing: .12em; text-transform: uppercase; color: var(--gold); }
-.hero h1 { font: 400 clamp(44px, 7vw, 76px)/.98 var(--font-head); letter-spacing: .01em; }
-.hero h1 span { color: var(--gold); }
-.hero p { color: var(--on-blue-muted); font-size: clamp(17px, 1.6vw, 19px); max-width: 60ch; }
-.cta { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 6px; }
-.btn { display: inline-flex; align-items: center; min-height: 48px; padding: 0 22px; border-radius: 999px; font: 700 16px/1 var(--font-body); text-decoration: none; border: 2px solid transparent; }
-.btn.primary { background: var(--gold); color: var(--blue); }
-.btn.ghost { color: #FFFFFF; border-color: rgba(255,255,255,.5); }
-.btn:focus-visible { outline: 3px solid #FFFFFF; outline-offset: 3px; }
+.hero { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, .9fr); gap: 48px; align-items: center; padding-block: 56px 64px; }
+.hero h1 { font-size: clamp(34px, 5vw, 54px); font-weight: 600; letter-spacing: -.01em; }
+.hero h1 em { font-style: normal; color: var(--gold); }
+.hero .lede { margin-top: 22px; font-size: 19px; color: var(--hero-muted); max-width: 34em; }
+.hero .lede strong { color: #fff; font-weight: 600; }
+.hero .cta { margin-top: 30px; display: flex; flex-wrap: wrap; gap: 12px; }
+.btn {
+  display: inline-flex; align-items: center; gap: 8px; padding: 12px 20px; border-radius: 999px;
+  font: 600 15px/1 var(--font-body); text-decoration: none; border: 2px solid transparent; cursor: pointer;
+}
+.btn.primary { background: var(--gold); color: var(--navy); }
+.btn.primary:hover { background: #ffd65e; }
+.btn.ghost { color: #fff; border-color: rgba(255,255,255,.35); }
+.btn.ghost:hover { border-color: #fff; }
 
-/* On this page */
-.onpage { border-bottom: 1px solid var(--line); }
-.onpage .wrap { padding-block: 12px; display: flex; flex-wrap: wrap; align-items: center; gap: 8px 10px; }
-.onpage strong { font-size: 14px; color: var(--muted); margin-right: 4px; }
-.onpage a { display: inline-flex; align-items: center; min-height: 44px; padding: 0 16px; border: 1px solid var(--line); border-radius: 999px; text-decoration: none; font-weight: 500; font-size: 15px; color: var(--ink); }
-.onpage a:hover { border-color: var(--blue); }
+.team-fig { width: 100%; max-width: 400px; justify-self: center; }
+.team-fig svg { width: 100%; height: auto; display: block; }
+.team-fig figcaption { margin-top: 10px; font-size: 13px; color: var(--hero-muted); text-align: center; }
 
-/* Sections */
-section { padding-block: clamp(36px, 5vw, 56px); scroll-margin-top: 8px; }
-section + section { border-top: 1px solid var(--line); }
-.section-head { display: grid; gap: 8px; margin-bottom: 22px; }
-.section-head p { color: var(--muted); max-width: 68ch; }
-.cols { display: grid; gap: 28px; }
-@media (min-width: 48em) { .cols { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); } }
-.stack { display: grid; gap: 12px; align-content: start; min-width: 0; }
+/* ---------- Mission ---------- */
+.mission { padding-block: 64px 24px; }
+.mission-grid { display: grid; grid-template-columns: minmax(0, 220px) minmax(0, 1fr); gap: 40px; }
+.mission h2 { font-size: 26px; }
+.partner-logo { align-self: start; background: #FFFFFF; border: 1px solid var(--line); border-radius: var(--radius); padding: 26px 22px; display: grid; place-items: center; }
+.partner-logo img { display: block; width: 100%; max-width: 190px; height: auto; }
+.mission .prose { display: grid; gap: 18px; font-size: 18px; max-width: 40em; }
+.mission .prose p:first-child::first-line { font-weight: 600; }
+.pillars { margin-top: 30px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+.pillar { border-top: 3px solid var(--blue); padding-top: 12px; font-size: 15px; color: var(--muted); }
+.pillar b { display: block; color: var(--ink); font-size: 16px; margin-bottom: 2px; }
 
-/* Partnership */
-.partner { background: var(--band); }
-.partner .wrap { display: grid; gap: 22px; align-items: center; }
-@media (min-width: 48em) { .partner .wrap { grid-template-columns: 260px minmax(0, 1fr); gap: 40px; } }
-.partner-logo { background: #FFFFFF; border: 1px solid var(--line); border-radius: var(--radius); padding: 28px 24px; display: grid; place-items: center; }
-.partner-logo img { display: block; width: 100%; max-width: 212px; height: auto; }
+/* ---------- Pathway cards ---------- */
+.paths { padding-block: 40px 24px; }
+.paths-head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 8px 20px; margin-bottom: 20px; }
+.paths-head h2 { font-size: 30px; }
+.paths-head p { color: var(--muted); }
+.cards { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
+.card {
+  display: flex; flex-direction: column; gap: 10px; padding: 22px 20px 20px;
+  background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
+  color: var(--ink); text-decoration: none; transition: transform .15s ease, border-color .15s ease, box-shadow .15s ease;
+}
+.card:hover { transform: translateY(-3px); border-color: var(--blue); box-shadow: 0 10px 24px -14px rgba(4,30,66,.45); }
+.card .code { font: 500 12.5px/1 var(--font-mono); color: var(--blue); }
+.card h3 { font-size: 21px; }
+.card p { font-size: 15px; color: var(--muted); flex: 1; }
+.card .go { font: 600 14px/1 var(--font-body); color: var(--link); }
 
-/* Table */
-.table-wrap { min-width: 0; }
-table { width: 100%; border-collapse: collapse; font-size: 16px; }
-caption { text-align: left; font: 700 18px/1.35 var(--font-sub); padding-bottom: 10px; }
-th, td { text-align: left; padding: 9px 10px; border-bottom: 1px solid var(--line); vertical-align: top; }
-thead th { font: 700 12.5px/1.3 var(--font-body); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
-tbody th { font-weight: 500; white-space: nowrap; }
-tr.group th { background: var(--band); font: 700 13px/1.3 var(--font-body); letter-spacing: .06em; text-transform: uppercase; color: var(--muted); white-space: normal; }
-code { font: 500 15px/1 ui-monospace, Menlo, Consolas, monospace; white-space: nowrap; }
-@media (max-width: 26em) { th, td { padding: 8px 6px; } table { font-size: 15px; } code { font-size: 14px; } }
-.note { font-size: 15px; color: var(--muted); }
-.callout { background: var(--tint); border-left: 4px solid var(--gold); padding: 14px 16px; border-radius: 0 var(--radius) var(--radius) 0; font-size: 16px; }
+/* ---------- Sections ---------- */
+.section { padding-block: 56px; border-top: 1px solid var(--line); scroll-margin-top: 12px; }
+.section:first-of-type { border-top: 0; }
+.sec-head { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 8px 24px; align-items: end; margin-bottom: 26px; }
+.sec-head h2 { font-size: clamp(28px, 3.6vw, 38px); margin-top: 8px; }
+.sec-head .intro { grid-column: 1 / -1; color: var(--muted); font-size: 18px; max-width: 42em; margin-top: 6px; }
+.back { font-size: 14px; white-space: nowrap; }
+.two { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 28px; }
+.panel { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 24px; min-width: 0; }
+.panel h3 { font-size: 20px; margin-bottom: 12px; }
+.checks { list-style: none; padding: 0; margin: 0; display: grid; gap: 12px; }
+.checks li { position: relative; padding-left: 28px; }
+.checks li::before {
+  content: ""; position: absolute; left: 2px; top: .45em; width: 14px; height: 8px;
+  border-left: 2.5px solid var(--blue); border-bottom: 2.5px solid var(--blue); transform: rotate(-45deg);
+}
+.note {
+  margin-top: 22px; padding: 16px 18px; border-radius: var(--radius); background: var(--tint);
+  font-size: 15.5px; border-left: 4px solid var(--gold);
+}
+.note b { font-weight: 600; }
+.source { margin-top: 14px; font-size: 13px; color: var(--muted); }
 
-/* Accordions: used only for supporting detail */
-details { border: 1px solid var(--line); border-radius: var(--radius); margin-top: 22px; }
-summary { cursor: pointer; padding: 14px 16px; min-height: 48px; font: 700 16px/1.4 var(--font-body); }
-summary:focus-visible { outline: 3px solid var(--gold); outline-offset: 2px; }
-details > div { padding: 0 16px 16px; display: grid; gap: 12px; }
-.formula { font: 500 15px/1.5 ui-monospace, Menlo, Consolas, monospace; background: var(--band); padding: 8px 10px; border-radius: 6px; }
-.options { display: grid; gap: 12px; }
-@media (min-width: 48em) { .options { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); } }
-.options div { border-top: 3px solid var(--blue); padding-top: 8px; font-size: 15.5px; }
-.options b { display: block; }
+/* Billing table */
+.table-scroll { overflow-x: auto; margin-top: 4px; }
+table { width: 100%; border-collapse: collapse; font-size: 15px; }
+th, td { text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--line); vertical-align: top; }
+th { font: 600 12px/1.3 var(--font-body); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+td.min { font-variant-numeric: tabular-nums; white-space: nowrap; }
+td code, .calc code { font: 500 14px/1 var(--font-mono); background: var(--tint); padding: 3px 6px; border-radius: 4px; white-space: nowrap; }
+tr.group td { background: var(--bg); font-weight: 600; font-size: 13px; letter-spacing: .04em; text-transform: uppercase; color: var(--muted); }
 
-/* FAQ, visible */
-.qa { display: grid; gap: 22px; }
-@media (min-width: 48em) { .qa { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 26px 40px; } }
-.qa div { display: grid; gap: 6px; }
+/* Calculator */
+.calc { display: grid; gap: 16px; }
+.calc .fields { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 14px; }
+.calc label { display: grid; gap: 6px; font-size: 14px; font-weight: 600; }
+.calc input, .calc select {
+  font: 500 17px/1.2 var(--font-body); padding: 10px 12px; border-radius: 8px;
+  border: 1px solid var(--line); background: var(--bg); color: var(--ink); width: 100%;
+}
+.calc .result { border-radius: 8px; background: var(--navy); color: #fff; padding: 18px; }
+.calc .result .codes { font: 600 26px/1.2 var(--font-mono); color: var(--gold); }
+.calc .result p { margin-top: 6px; font-size: 14.5px; color: var(--hero-muted); }
+.calc .fine { font-size: 13px; color: var(--muted); }
+
+.formula { font: 500 14.5px/1.5 var(--font-mono); background: var(--tint); padding: 10px 12px; border-radius: 6px; margin-top: 8px; overflow-x: auto; }
+
+/* Registry options */
+.options { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin-top: 28px; }
+.opt { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 18px 20px; display: grid; gap: 6px; }
+.opt .ex { font: 500 12.5px/1 var(--font-mono); color: var(--blue); }
+.opt h3 { font-size: 18px; }
+.opt dl { margin: 4px 0 0; display: grid; gap: 6px; font-size: 14.5px; }
+.opt dt { font-weight: 600; }
+.opt dd { margin: 0; color: var(--muted); }
+
+/* Psychiatry steps */
+.steps { list-style: none; padding: 0; margin: 0; display: grid; gap: 0; counter-reset: s; }
+.steps li { counter-increment: s; display: grid; grid-template-columns: 40px minmax(0, 1fr); gap: 14px; padding-block: 14px; border-bottom: 1px solid var(--line); }
+.steps li:last-child { border-bottom: 0; }
+.steps li::before {
+  content: counter(s); display: grid; place-items: center; width: 32px; height: 32px; border-radius: 50%;
+  background: var(--navy); color: var(--gold); font: 600 14px/1 var(--font-body);
+}
+:root[data-theme="dark"] .steps li::before { background: var(--gold); color: var(--navy); }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .steps li::before { background: var(--gold); color: var(--navy); } }
+.steps b { display: block; }
+.steps span { color: var(--muted); font-size: 15.5px; }
+
+/* FAQ */
+.faq { display: grid; gap: 10px; max-width: 820px; }
+.faq details { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); }
+.faq summary {
+  cursor: pointer; list-style: none; padding: 16px 52px 16px 20px; position: relative;
+  font: 600 17px/1.4 var(--font-body);
+}
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after {
+  content: ""; position: absolute; right: 22px; top: 50%; width: 10px; height: 10px;
+  border-right: 2px solid var(--blue); border-bottom: 2px solid var(--blue);
+  transform: translateY(-70%) rotate(45deg); transition: transform .2s ease;
+}
+.faq details[open] summary::after { transform: translateY(-30%) rotate(-135deg); }
+.faq .ans { padding: 0 20px 18px; color: var(--muted); display: grid; gap: 10px; }
 
 /* Contact */
-.contact { background: var(--blue); color: var(--on-blue); }
-.contact h2 { color: #FFFFFF; }
-.contact p { color: var(--on-blue-muted); max-width: 60ch; }
-.contact a { color: var(--gold); }
-.contact .card { margin-top: 18px; display: grid; gap: 4px; }
-.contact .who { font: 700 19px/1.3 var(--font-sub); color: #FFFFFF; }
-.fine { font-size: 14.5px; color: var(--muted); display: grid; gap: 8px; }
-.fine strong { color: var(--ink); }
+.contact { background: var(--navy); color: #fff; border-bottom: 6px solid var(--gold); }
+.contact .wrap { padding-block: 56px; display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); gap: 32px; align-items: center; }
+.contact h2 { font-size: clamp(26px, 3.4vw, 36px); }
+.contact p { color: var(--hero-muted); margin-top: 12px; font-size: 17px; max-width: 36em; }
+.contact-card { background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.18); border-radius: var(--radius); padding: 22px; display: grid; gap: 6px; }
+.contact-card .who { font: 600 20px/1.3 var(--font-display); }
+.contact-card .role { color: var(--hero-muted); font-size: 14.5px; }
+.contact-card .email { margin-top: 10px; display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+.contact-card .email a { color: var(--gold); font: 500 16px/1.3 var(--font-mono); word-break: break-all; }
+.copy { display: inline-flex; align-items: center; min-height: 44px; font: 600 14px/1 var(--font-body); padding: 0 18px; border-radius: 999px; border: 1px solid rgba(255,255,255,.35); background: transparent; color: #fff; cursor: pointer; }
+.copy:hover { border-color: #fff; }
+footer { padding-block: 26px 40px; font-size: 13.5px; color: var(--muted); }
+footer .wrap { display: grid; gap: 8px; }
 
-@media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
-@media print {
-  .skip, .onpage, .cta { display: none !important; }
-  body { font-size: 11pt; background: #fff; color: #000; }
-  .hero, .contact { background: #fff !important; color: #000 !important; }
-  .hero *, .contact * { color: #000 !important; }
-  details > div { display: grid !important; }
-  table, .options div, .qa div { break-inside: avoid; }
+/* ---------- Responsive ---------- */
+@media (max-width: 920px) {
+  .cards { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .hero { grid-template-columns: minmax(0, 1fr); gap: 32px; padding-block: 40px 48px; }
+  .team-fig { max-width: 340px; }
+  .contact .wrap { grid-template-columns: minmax(0, 1fr); }
 }
+@media (max-width: 720px) {
+  body { font-size: 16px; }
+  .mission-grid, .two, .options { grid-template-columns: minmax(0, 1fr); gap: 20px; }
+  .pillars { grid-template-columns: minmax(0, 1fr); }
+  .sec-head { grid-template-columns: minmax(0, 1fr); }
+  .calc .fields { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 480px) {
+  .panel { padding: 18px; }
+  table { font-size: 14px; }
+  th, td { padding: 8px 6px; }
+  td code { font-size: 13px; padding: 2px 4px; }
+  .cards { grid-template-columns: minmax(0, 1fr); }
+  .hero .lede { font-size: 17px; }
+}
+.topbar { background: #FFFFFF; }
+.topbar-in { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 14px 28px; padding-block: 16px; }
+.partners { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 22px; min-width: 0; }
+.etsu-lockup { display: flex; align-items: center; gap: 12px; }
+.etsu-lockup svg { width: 46px; height: auto; flex: none; display: block; }
+.etsu-words { display: grid; gap: 5px; }
+.etsu-words .inst { font: 600 16.5px/1.12 var(--font-display); color: #041E42; text-transform: uppercase; letter-spacing: .02em; }
+.etsu-words .sub { font: 600 10px/1.35 var(--font-body); color: #4E5D72; letter-spacing: .1em; text-transform: uppercase; padding-top: 5px; border-top: 2px solid #FFC72C; }
+.partners .rule { width: 1px; height: 52px; background: #D9E0EA; }
+.logo-bcbs { display: block; height: 36px; width: auto; max-width: 100%; }
+.topbar .topnav a { color: #041E42; font-weight: 500; }
+.topbar .topnav a:hover { color: #0065B3; }
+@media (max-width: 560px) { .partners .rule { display: none; } .logo-bcbs { height: 30px; } }
+.topbar .topnav a { display: inline-flex; align-items: center; min-height: 44px; }
+/* Phones: section links stay visible as a swipeable row of chips */
+@media (max-width: 720px) {
+  .topbar-in { gap: 12px; padding-block: 14px 10px; }
+  .topbar .topnav {
+    width: 100%; flex-wrap: nowrap; gap: 8px; overflow-x: auto; scrollbar-width: none;
+    -webkit-mask-image: linear-gradient(90deg, #000 85%, transparent); mask-image: linear-gradient(90deg, #000 85%, transparent);
+  }
+  .topbar .topnav::-webkit-scrollbar { display: none; }
+  .topbar .topnav a { flex: none; padding: 0 16px; border: 1px solid #D9E0EA; border-radius: 999px; white-space: nowrap; font-size: 15px; }
+  .topbar .topnav a:last-child { margin-right: 32px; }
+}
+.skip { position: absolute; left: -9999px; top: 8px; z-index: 20; background: var(--gold); color: var(--navy); padding: 12px 18px; border-radius: 8px; font-weight: 600; text-decoration: none; }
+.skip:focus { left: max(16px, env(safe-area-inset-left, 0px)); }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+.contact-card .privacy { margin-top: 6px; font-size: 13.5px; color: var(--hero-muted); }
+footer .crisis { color: var(--ink); }
+footer a { color: var(--link); }
+@media print {
+  .topbar .topnav, .hero .cta, .back, .copy, .skip, .calc { display: none !important; }
+  body { background: #fff; color: #000; font-size: 11pt; }
+  .masthead, .contact { background: #fff !important; color: #000 !important; border-color: #000 !important; }
+  .masthead *, .contact * { color: #000 !important; }
+  .card, .panel, .opt, table, figure, .faq details { break-inside: avoid; }
+  h2, h3 { break-after: avoid; }
+  details > *:not(summary) { display: block !important; }
+  a[href^="http"]::after { content: " (" attr(href) ")"; font-size: 9pt; word-break: break-all; }
+  @page { margin: 0.6in; }
+}
+.sitename { font: 600 20px/1.2 var(--font-display); color: var(--hero-ink); }
+.sitename span { color: var(--gold); }
+.hero .attrib { margin-top: 16px; font-size: 14.5px; color: var(--hero-muted); max-width: 40em; border-left: 3px solid var(--gold); padding-left: 12px; }
 </style>
 </head>
 <body>
 <a class="skip" href="#content">Skip to main content</a>
 
-<div class="unit-bar" role="banner">
-  <div class="wrap"><b>Institute for Integrated Behavioral Health</b>Quillen College of Medicine · East Tennessee State University</div>
-</div>
-
-<main id="content">
-  <div class="hero">
-    <div class="wrap">
-      <p class="eyebrow">Collaborative Care Model (CoCM)</p>
-      <h1>Collaborative care, <span>done right,</span> for Tennessee patients</h1>
-      <p>This page shows primary care practices how to deliver the Collaborative Care Model with fidelity and bill for it correctly. It draws on our two-year pilot with BlueCross BlueShield of Tennessee.</p>
-      <div class="cta">
-        <a class="btn primary" href="#billing">See the billing codes</a>
-        <a class="btn ghost" href="#contact">Request the full guide</a>
+<div class="topbar">
+  <div class="wrap topbar-in">
+    <div class="partners" aria-label="ETSU Institute for Integrated Behavioral Health">
+      <div class="etsu-lockup">
+        <svg viewBox="0 0 100 116" aria-hidden="true" focusable="false">
+          <path d="M4 4H96V58C96 84 74 102 50 112C26 102 4 84 4 58Z" fill="#041E42"/>
+          <path d="M11 11H89V57C89 79 70 94 50 103C30 94 11 79 11 57Z" fill="none" stroke="#FFC72C" stroke-width="3.5"/>
+          <g fill="#FFC72C">
+            <path d="M31 30H71V43H67V37H47V52H61V48H65V62H61V58H47V73H68V66H72V80H31V75H37V58H26V52H37V35H31Z"/>
+          </g>
+        </svg>
+        <div class="etsu-words">
+          <span class="inst">Institute for Integrated<br>Behavioral Health</span>
+          <span class="sub">Quillen College of Medicine<br>East Tennessee State University</span>
+        </div>
       </div>
     </div>
-  </div>
-
-  <nav class="onpage" aria-label="On this page">
-    <div class="wrap">
-      <strong>On this page:</strong>
-      <a href="#partnership">Partnership</a>
+    <nav class="topnav" aria-label="Sections">
       <a href="#billing">Billing</a>
       <a href="#registry">Registry</a>
       <a href="#psychiatry">Psychiatry</a>
-      <a href="#questions">Questions</a>
+      <a href="#faq">FAQ</a>
       <a href="#contact">Full guide</a>
-    </div>
-  </nav>
+    </nav>
+  </div>
+</div>
 
-  <section class="partner" id="partnership" aria-labelledby="partnerTitle">
-    <div class="wrap">
+<header class="masthead">
+
+  <div class="wrap hero">
+    <div>
+      <p class="eyebrow" style="color: var(--gold)">Collaborative Care Model · Tennessee</p>
+      <h1 style="margin-top:14px">Collaborative care, <em>done right</em>, for Tennessee patients.</h1>
+      <p class="lede">We’re glad you’re here. This is a practical guide to the Collaborative Care Model (CoCM) from clinicians who have done the work in a Tennessee clinic: <strong>how to deliver it with fidelity</strong>, bill for it correctly, and keep it going.</p>
+      <div class="cta">
+        <a class="btn primary" href="#start">Start here</a>
+        <a class="btn ghost" href="#contact">Request the full guide</a>
+      </div>
+    </div>
+
+    <figure class="team-fig" style="margin:0">
+      <svg viewBox="0 0 400 340" role="img" aria-labelledby="teamTitle">
+        <title id="teamTitle">The CoCM care team: primary care clinician, behavioral health care manager, and psychiatric consultant around the patient, linked by a shared registry.</title>
+        <g fill="none" stroke="#FFC72C" stroke-width="2" stroke-dasharray="5 6" opacity=".8">
+          <line x1="200" y1="62" x2="72" y2="262"/>
+          <line x1="200" y1="62" x2="328" y2="262"/>
+          <line x1="72" y1="262" x2="328" y2="262"/>
+        </g>
+        <circle cx="200" cy="190" r="58" fill="#0065B3"/>
+        <circle cx="200" cy="190" r="58" fill="none" stroke="#FFFFFF" stroke-opacity=".35" stroke-width="2"/>
+        <text x="200" y="186" text-anchor="middle" fill="#FFFFFF" font-family="Literata, Georgia, serif" font-size="20" font-weight="600">Patient</text>
+        <text x="200" y="208" text-anchor="middle" fill="#C6D2E3" font-family="Public Sans, Arial, sans-serif" font-size="12">+ shared registry</text>
+
+        <g font-family="Public Sans, Arial, sans-serif" text-anchor="middle">
+          <circle cx="200" cy="62" r="36" fill="#FFC72C"/>
+          <text x="200" y="68" fill="#041E42" font-size="16" font-weight="700">PCP</text>
+          <text x="200" y="16" fill="#FFFFFF" font-size="13" font-weight="600">Primary care clinician</text>
+
+          <circle cx="72" cy="262" r="36" fill="#FFC72C"/>
+          <text x="72" y="268" fill="#041E42" font-size="16" font-weight="700">BHCM</text>
+          <text x="72" y="320" fill="#FFFFFF" font-size="13" font-weight="600">Care manager</text>
+
+          <circle cx="328" cy="262" r="36" fill="#FFC72C"/>
+          <text x="328" y="268" fill="#041E42" font-size="16" font-weight="700">Psych</text>
+          <text x="328" y="320" fill="#FFFFFF" font-size="13" font-weight="600">Psychiatric consultant</text>
+        </g>
+      </svg>
+      <figcaption>Three roles, one registry, care that treats to target.</figcaption>
+    </figure>
+  </div>
+</header>
+
+<main id="content">
+  <section class="wrap mission" id="start" aria-labelledby="missionTitle">
+    <div class="mission-grid">
       <div class="partner-logo">
         <img src="data:image/png;base64,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" alt="BlueCross BlueShield of Tennessee" width="318" height="64">
       </div>
-      <div class="stack prose">
-        <h2 id="partnerTitle">A partnership with BlueCross BlueShield of Tennessee</h2>
-        <p>Over two years, the Institute for Integrated Behavioral Health ran a Collaborative Care Model pilot in an ETSU pediatric clinic in partnership with BlueCross BlueShield of Tennessee (BCBST). BCBST supported the pilot to learn how CoCM and its billing codes work in Tennessee primary care, and is helping share what we learned with providers.</p>
-        <p>BCBST covers the CoCM codes, and a 2025 Tennessee law requires all third-party payers to reimburse them. Coverage helps patients only when the model is delivered as designed, which is what this page is for.</p>
+      <div class="prose">
+        <p class="eyebrow">Our partnership</p>
+        <h2 id="missionTitle">Good care and correct billing come from the same place: fidelity.</h2>
+        <p>Over two years, ETSU’s Institute for Integrated Behavioral Health ran a CoCM pilot in an ETSU pediatric clinic in partnership with BlueCross BlueShield of Tennessee (BCBST). BCBST covers the CoCM codes, and Tennessee law now requires every third-party payer to reimburse them.</p>
+        <p>The model works when a primary care clinician (PCP), a behavioral health care manager (BHCM), and a consulting psychiatrist share a registry, measure symptoms over time, and adjust treatment for patients who aren’t improving. This page shares what we learned so your practice can do the same.</p>
       </div>
     </div>
   </section>
 
-  <section id="billing" aria-labelledby="billingTitle">
+  <section class="wrap paths" aria-labelledby="pathsTitle">
+    <div class="paths-head">
+      <h2 id="pathsTitle">Where do you want to start?</h2>
+      <p>Each section is short. Read one, or all four.</p>
+    </div>
+    <div class="cards">
+      <a class="card" href="#billing">
+        <span class="code">99492–99494 · 99484</span>
+        <h3>Billing for the codes</h3>
+        <p>Time thresholds, base and add-on codes, and general BHI.</p>
+        <span class="go">Read billing →</span>
+      </a>
+      <a class="card" href="#registry">
+        <span class="code">PHQ-9 · GAD-7 · follow-up</span>
+        <h3>Implementing a registry</h3>
+        <p>What a registry must do, and how the options compare.</p>
+        <span class="go">Read registry →</span>
+      </a>
+      <a class="card" href="#psychiatry">
+        <span class="code">Weekly caseload review</span>
+        <h3>Engaging psychiatry</h3>
+        <p>How to plan a caseload review that changes care.</p>
+        <span class="go">Read psychiatry →</span>
+      </a>
+      <a class="card" href="#faq">
+        <span class="code">Common questions</span>
+        <h3>FAQ</h3>
+        <p>Where to start, training, telehealth, and measuring success.</p>
+        <span class="go">Read FAQ →</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- ===================== BILLING ===================== -->
+  <section class="section" id="billing" aria-labelledby="billingTitle">
     <div class="wrap">
-      <div class="section-head">
-        <h2 id="billingTitle">Billing for the CoCM codes</h2>
-        <p>CoCM is billed once per calendar month, based on the total time the care team spends on a patient’s collaborative care across all contacts.</p>
-      </div>
-      <div class="cols">
-        <div class="table-wrap">
-          <table>
-            <caption>Codes by total CoCM time per month</caption>
-            <thead><tr><th scope="col">Time / month</th><th scope="col">Base</th><th scope="col">Add-on</th></tr></thead>
-            <tbody>
-              <tr class="group"><th scope="rowgroup" colspan="3">Initial month</th></tr>
-              <tr><th scope="row">36–85 min</th><td><code>99492</code></td><td>None</td></tr>
-              <tr><th scope="row">86–115 min</th><td><code>99492</code></td><td><code>99494</code> ×1</td></tr>
-              <tr><th scope="row">116–145 min</th><td><code>99492</code></td><td><code>99494</code> ×2</td></tr>
-              <tr class="group"><th scope="rowgroup" colspan="3">Subsequent months</th></tr>
-              <tr><th scope="row">31–75 min</th><td><code>99493</code></td><td>None</td></tr>
-              <tr><th scope="row">76–105 min</th><td><code>99493</code></td><td><code>99494</code> ×1</td></tr>
-              <tr><th scope="row">106–135 min</th><td><code>99493</code></td><td><code>99494</code> ×2</td></tr>
-              <tr class="group"><th scope="rowgroup" colspan="3">Shorter month</th></tr>
-              <tr><th scope="row">30 min</th><td><code>G2214</code></td><td>None</td></tr>
-            </tbody>
-          </table>
+      <div class="sec-head">
+        <div>
+          <p class="eyebrow">Section 1</p>
+          <h2 id="billingTitle">Billing for the CoCM codes</h2>
         </div>
-        <div class="stack">
+        <a class="back" href="#start">↑ Back to top</a>
+        <p class="intro">CoCM codes are billed once per calendar month, based on the care team’s total time on a patient’s collaborative care across all contacts.</p>
+      </div>
+
+      <div class="two">
+        <div class="panel">
+          <h3>Time-based code table</h3>
+          <div class="table-scroll">
+            <table>
+              <caption class="sr-only">CoCM billing codes by total care-team minutes in a calendar month</caption>
+              <thead><tr><th scope="col">Total time / month</th><th scope="col">Base</th><th scope="col">Add-on</th></tr></thead>
+              <tbody>
+                <tr class="group"><td colspan="3">Initial month</td></tr>
+                <tr><td class="min">36–85 min</td><td><code>99492</code></td><td>None</td></tr>
+                <tr><td class="min">86–115 min</td><td><code>99492</code></td><td><code>99494</code> ×1</td></tr>
+                <tr><td class="min">116–145 min</td><td><code>99492</code></td><td><code>99494</code> ×2</td></tr>
+                <tr class="group"><td colspan="3">Subsequent months</td></tr>
+                <tr><td class="min">31–75 min</td><td><code>99493</code></td><td>None</td></tr>
+                <tr><td class="min">76–105 min</td><td><code>99493</code></td><td><code>99494</code> ×1</td></tr>
+                <tr><td class="min">106–135 min</td><td><code>99493</code></td><td><code>99494</code> ×2</td></tr>
+                <tr class="group"><td colspan="3">Shorter month</td></tr>
+                <tr><td>30 min, base not met</td><td><code>G2214</code></td><td>None</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="source">99492 covers the first 70 minutes and 99493 the first 60, under CPT time rules. Verify payer-specific rules, especially for G2214.</p>
+          <p class="source">Last reviewed <time datetime="2026-11">November 2026</time>. Coding and payment rules change, so confirm current requirements with BlueCross BlueShield of Tennessee and CMS before billing.</p>
+        </div>
+
+        <div class="panel">
+          <h3>Find the code for a month</h3>
+          <form class="calc" id="calc" onsubmit="return false">
+            <div class="fields">
+              <label for="calc-month">Month of care
+                <select id="calc-month">
+                  <option value="initial">Initial month</option>
+                  <option value="subsequent" selected>Subsequent month</option>
+                </select>
+              </label>
+              <label for="calc-min">Total CoCM minutes
+                <input id="calc-min" type="number" inputmode="numeric" min="0" max="300" step="1" value="82">
+              </label>
+            </div>
+            <div class="result" aria-live="polite">
+              <div class="codes" id="calc-codes">99493 + 99494</div>
+              <p id="calc-note">Subsequent month, 82 minutes.</p>
+            </div>
+            <p class="fine">A quick check against the table above. It is not billing advice; confirm with your billing team and payer.</p>
+          </form>
+        </div>
+      </div>
+
+      <div class="two" style="margin-top:28px; align-items:start">
+        <div class="panel">
           <h3>Getting it right</h3>
-          <ul>
-            <li>Track each patient’s CoCM time per calendar month as it happens.</li>
-            <li>Document the activities behind the time: outreach, follow-up, registry updates, and caseload review with the psychiatric consultant.</li>
+          <ul class="checks">
+            <li>Track each patient’s CoCM time per calendar month as it happens, and document the activities behind it.</li>
             <li>Confirm eligible billing practitioners and limits on billing other services in the same month.</li>
             <li>Before you scale, send 8–10 sample claims to BCBST for feedback.</li>
           </ul>
-          <p class="note">G2214 applies when the base-code time isn’t reached; verify payer rules. Last reviewed <time datetime="2026-11">November 2026</time>. Coding and payment rules change, so confirm current requirements with BCBST and CMS before billing.</p>
+        </div>
+        <div class="panel" id="bhi">
+          <h3>Not full CoCM? General BHI, code <code>99484</code></h3>
+          <p style="color:var(--muted); font-size:15.5px; margin-bottom:14px">General behavioral health integration (BHI) covers care management that doesn’t include every CoCM element, such as a consulting psychiatrist or registry-based caseload review.</p>
+          <ul class="checks">
+            <li>At least 20 minutes of clinical staff time per calendar month, directed by a physician or other qualified clinician.</li>
+            <li>Includes assessment or monitoring with validated rating scales, a care plan, care coordination, and an ongoing relationship with a designated care team member.</li>
+            <li>Don’t bill 99484 and the CoCM codes (99492–99494) for the same patient in the same month.</li>
+          </ul>
+          <p class="source">Based on the CPT code descriptor and CMS behavioral health integration guidance. Confirm BCBST’s rules before billing.</p>
         </div>
       </div>
-      <details>
-        <summary>Planning for sustainability</summary>
-        <div>
-          <p>Expected revenue and break-even volume help you plan staffing:</p>
-          <p class="formula">Expected revenue = Billable service volume × Expected payment per service</p>
-          <p class="formula">Break-even volume = Total program cost ÷ Average net revenue per billable episode</p>
-          <p class="note">Adjust for payer mix, denials, and collection rates. Costs include care manager and psychiatric consultant time, admin support, registry or technology, and training.</p>
-        </div>
-      </details>
+      <div class="faq" style="margin-top:22px; max-width:none">
+        <details>
+          <summary>Planning for sustainability</summary>
+          <div class="ans">
+            <div class="formula">Expected revenue = Billable service volume × Expected payment per service</div>
+            <div class="formula">Break-even volume = Total program cost ÷ Average net revenue per billable episode</div>
+            <p>Adjust for payer mix, denials, and collection rates. Costs include BHCM and psychiatric consultant time, admin support, registry or technology, and training.</p>
+          </div>
+        </details>
+      </div>
     </div>
   </section>
 
-  <section id="registry" aria-labelledby="registryTitle">
+  <!-- ===================== REGISTRY ===================== -->
+  <section class="section" id="registry" aria-labelledby="registryTitle">
     <div class="wrap">
-      <div class="section-head">
-        <h2 id="registryTitle">Implementing a registry</h2>
-        <p>The registry keeps every enrolled patient in view so the team can spot those who aren’t improving. It doesn’t have to be fancy, but it has to be used.</p>
+      <div class="sec-head">
+        <div>
+          <p class="eyebrow">Section 2</p>
+          <h2 id="registryTitle">Implementing a registry</h2>
+        </div>
+        <a class="back" href="#start">↑ Back to top</a>
+        <p class="intro">The registry keeps every enrolled patient in view so your team can spot those who aren’t improving. It doesn’t have to be fancy. It has to be used.</p>
       </div>
-      <div class="cols">
-        <div class="stack">
-          <h3>At minimum, a registry should</h3>
-          <ul>
-            <li>List every patient enrolled in CoCM.</li>
-            <li>Track measures (such as the PHQ-9 or GAD-7) and follow-up over time.</li>
-            <li>Flag patients who disengage or aren’t improving as expected.</li>
-            <li>Support caseload review with the psychiatric consultant.</li>
+
+      <div class="two">
+        <div class="panel">
+          <h3>At minimum, your registry should</h3>
+          <ul class="checks">
+            <li>Identify every patient enrolled in CoCM.</li>
+            <li>Track clinical measures (such as the PHQ-9 or GAD-7) and follow-up over time.</li>
+            <li>Flag patients who drop off or aren’t improving as expected.</li>
+            <li>Support systematic caseload review with the psychiatric consultant.</li>
           </ul>
         </div>
-        <div class="stack">
-          <h3>In our pilot</h3>
-          <p>We built the registry in REDCap during an EHR transition. It tracked CoCM time, follow-up, psychiatric consultation, safety planning, and measures including the PHQ-A and GAD-7.</p>
-          <p class="callout">Recording CoCM time in the registry shows when a patient crosses a billing threshold for the month.</p>
+        <div class="panel">
+          <h3>From the ETSU pilot</h3>
+          <p style="color:var(--muted); font-size:15.5px">We built ours in REDCap during an EHR transition. It tracked CoCM time, follow-up, psychiatric consultation, safety planning, and measures such as the PHQ-A and GAD-7.</p>
+          <div class="note"><b>Tip:</b> Recording CoCM time in the registry shows when a patient crosses a billing threshold for the month.</div>
         </div>
       </div>
-      <details>
-        <summary>Compare registry options</summary>
-        <div class="options">
-          <div><b>Spreadsheet</b> (secure Excel): low cost and easy to start; manual entry gets harder as volume grows.</div>
-          <div><b>Custom database</b> (REDCap): highly customizable; needs local setup, maintenance, and access management.</div>
-          <div><b>Purpose-built CoCM registry</b> (AIMS Caseload Tracker): designed for caseload review; may sit outside the EHR.</div>
-          <div><b>EHR-integrated</b> (Epic or another EHR): fits existing workflows; depends on local informatics support.</div>
+
+      <div class="options">
+        <div class="opt">
+          <span class="ex">e.g. secure Excel spreadsheet</span>
+          <h3>Spreadsheet</h3>
+          <dl><dt>Good for</dt><dd>Low cost, available now, easy to customize.</dd><dt>Watch for</dt><dd>Manual entry; harder to manage as volume grows.</dd></dl>
         </div>
-      </details>
+        <div class="opt">
+          <span class="ex">e.g. REDCap</span>
+          <h3>Custom database</h3>
+          <dl><dt>Good for</dt><dd>Highly customizable tracking and reporting.</dd><dt>Watch for</dt><dd>Needs local setup, maintenance, and access management.</dd></dl>
+        </div>
+        <div class="opt">
+          <span class="ex">e.g. AIMS Caseload Tracker</span>
+          <h3>Purpose-built CoCM registry</h3>
+          <dl><dt>Good for</dt><dd>Designed for CoCM population management and caseload review.</dd><dt>Watch for</dt><dd>May sit outside the EHR.</dd></dl>
+        </div>
+        <div class="opt">
+          <span class="ex">e.g. Epic or another EHR</span>
+          <h3>EHR-integrated</h3>
+          <dl><dt>Good for</dt><dd>Fits existing workflows; can reduce duplicate documentation.</dd><dt>Watch for</dt><dd>Depends on your EHR and available informatics support.</dd></dl>
+        </div>
+      </div>
+      <p class="source">Choose based on what the registry must do, and plan for privacy and how data moves to and from your EHR.</p>
     </div>
   </section>
 
-  <section id="psychiatry" aria-labelledby="psychTitle">
+  <!-- ===================== PSYCHIATRY ===================== -->
+  <section class="section" id="psychiatry" aria-labelledby="psychTitle">
     <div class="wrap">
-      <div class="section-head">
-        <h2 id="psychTitle">Engaging psychiatry</h2>
-        <p>The psychiatric consultant reviews the whole caseload with the care manager instead of seeing every patient, so one psychiatrist’s expertise reaches many more people. The primary care clinician (PCP) stays responsible for care and prescribing.</p>
+      <div class="sec-head">
+        <div>
+          <p class="eyebrow">Section 3</p>
+          <h2 id="psychTitle">Engaging psychiatry</h2>
+        </div>
+        <a class="back" href="#start">↑ Back to top</a>
+        <p class="intro">In CoCM, the psychiatric consultant supports the whole caseload instead of seeing every patient. Through regular review with the care manager, one psychiatrist’s expertise reaches many more people in primary care.</p>
       </div>
-      <div class="cols">
-        <div class="stack">
+
+      <div class="two">
+        <div class="panel">
           <h3>Plan these before you start</h3>
-          <ol>
-            <li><b>Consultant:</b> expertise that fits your population, with protected time.</li>
-            <li><b>Rhythm:</b> a predictable meeting schedule and format.</li>
-            <li><b>Priorities:</b> use the registry to bring forward new patients and those not improving.</li>
-            <li><b>Follow-through:</b> how recommendations are documented and reach the PCP.</li>
-            <li><b>Coverage:</b> who reviews cases when the consultant is away.</li>
+          <ol class="steps">
+            <li><div><b>Find the right consultant</b><span>Expertise that fits your population, with protected time.</span></div></li>
+            <li><div><b>Set the rhythm</b><span>Predictable beats frequent.</span></div></li>
+            <li><div><b>Prioritize the cases</b><span>Bring forward new patients and those not improving.</span></div></li>
+            <li><div><b>Close the loop</b><span>Document recommendations and get them to the PCP, who prescribes.</span></div></li>
+            <li><div><b>Plan for coverage</b><span>Know who reviews cases when the consultant is away.</span></div></li>
           </ol>
         </div>
-        <div class="stack">
-          <h3>In our pilot</h3>
-          <p>A psychiatrist with child and adolescent expertise met weekly with the behavioral health care manager (BHCM) for a one-hour, HIPAA-compliant video review. Physicians joined to present their patients when they could.</p>
+        <div class="panel">
+          <h3>How it worked in our pilot</h3>
+          <p style="color:var(--muted); font-size:15.5px">A psychiatrist with child and adolescent expertise met weekly with our care manager for a one-hour, HIPAA-compliant video review. Physicians joined to present their patients when they could.</p>
+          <div class="note"><b>Build buy-in.</b> A kickoff at a staff meeting or Grand Rounds shows clinicians when to involve the care manager and psychiatrist.</div>
         </div>
       </div>
     </div>
   </section>
 
-  <section id="questions" aria-labelledby="qTitle">
+  <!-- ===================== FAQ ===================== -->
+  <section class="section" id="faq" aria-labelledby="faqTitle">
     <div class="wrap">
-      <div class="section-head"><h2 id="qTitle">Common questions</h2></div>
-      <div class="qa">
-        <div><h3>Which conditions should we start with?</h3><p>Start small. Many practices begin with depression, using the PHQ-9 to measure progress, and expand once workflows are solid.</p></div>
-        <div><h3>Can follow-up happen by phone or telehealth?</h3><p>Yes, and regular contact with the care manager drives improvement. Use only the channels your organization approves.</p></div>
-        <div><h3>What training does the team need?</h3><p>Everyone should learn CoCM workflows. Care managers typically complete <a href="https://aims.uw.edu/">AIMS Center</a> training; our pilot also used the Meadows Collaborative Care Training Hub.</p></div>
-        <div><h3>How will we know it’s working?</h3><p>Track how many eligible patients are screened, referred, and enrolled, and follow each patient’s symptom scores over time, not just the average.</p></div>
+      <div class="sec-head">
+        <div>
+          <p class="eyebrow">Section 4</p>
+          <h2 id="faqTitle">Frequently asked questions</h2>
+        </div>
+        <a class="back" href="#start">↑ Back to top</a>
       </div>
-    </div>
-  </section>
 
-  <section class="contact" id="contact" aria-labelledby="contactTitle">
-    <div class="wrap">
-      <h2 id="contactTitle">Request the full implementation guide</h2>
-      <p>The complete guide covers every phase of implementation (Explore, Prepare, Implement, Sustain) with workflows, readiness tools, quality measures, and lessons from our pilot.</p>
-      <!-- If BCBST publishes the detailed guide as a webpage (not a PDF), add the link here. -->
-      <div class="card">
-        <span class="who">Jodi Polaha, PhD</span>
-        <span>East Tennessee State University</span>
-        <a href="mailto:polaha@etsu.edu">polaha@etsu.edu</a>
-        <p style="font-size:14.5px">Please don’t include patient health information in email.</p>
+      <div class="faq">
+        <details>
+          <summary>Which conditions should we start with?</summary>
+          <div class="ans"><p>Start small. Many practices begin with depression, using the PHQ-9 to measure progress, and expand once workflows are solid.</p></div>
+        </details>
+        <details>
+          <summary>Can follow-up happen by phone or telehealth?</summary>
+          <div class="ans"><p>Yes, and regular contact with the care manager is one of the strongest drivers of improvement. Use only the channels your organization approves.</p></div>
+        </details>
+        <details>
+          <summary>What training does the care team need?</summary>
+          <div class="ans"><p>Everyone should learn CoCM workflows. Care managers typically complete <a href="https://aims.uw.edu/" target="_blank" rel="noopener">AIMS Center</a> training; our pilot also used the Meadows Collaborative Care Training Hub.</p></div>
+        </details>
+        <details>
+          <summary>How will we know it’s working?</summary>
+          <div class="ans"><p>Track the share of eligible patients screened, referred, and enrolled, and follow each patient’s symptom scores over time, not just the average.</p></div>
+        </details>
       </div>
-    </div>
-  </section>
-
-  <section aria-label="About this page">
-    <div class="wrap fine">
-      <p><strong>In a crisis?</strong> Call or text <a href="tel:988">988</a>, or chat at <a href="https://988lifeline.org">988lifeline.org</a>. In an emergency, call 911.</p>
-      <p>This resource is for educational purposes and does not replace professional judgment, payer policy, or legal advice. Last reviewed <time datetime="2026-11">November 2026</time>.</p>
     </div>
   </section>
 </main>
+
+<section class="contact" id="contact" aria-labelledby="contactTitle">
+  <div class="wrap">
+    <div>
+      <p class="eyebrow" style="color: var(--gold)">The full implementation guide</p>
+      <h2 id="contactTitle" style="margin-top:10px">Ready to go deeper?</h2>
+      <p>The complete guide covers every phase of implementation (Explore, Prepare, Implement, Sustain) with workflows, readiness tools, and quality measures. Reach out to request a copy.</p>
+    </div>
+    <div class="contact-card">
+      <span class="who">Jodi Polaha, PhD</span>
+      <span class="role">East Tennessee State University</span>
+      <div class="email">
+        <a id="email" href="mailto:polaha@etsu.edu">polaha@etsu.edu</a>
+        <button class="copy" type="button" id="copyBtn">Copy email</button>
+      </div>
+      <p class="privacy">Please don’t include patient health information in email.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p>This resource is for educational purposes and does not replace professional judgment, payer policy, or legal advice. Coding and payment rules change; confirm current requirements with your payer and billing team.</p>
+    <p class="crisis"><strong>In a crisis?</strong> Call or text <a href="tel:988">988</a>, or chat at <a href="https://988lifeline.org">988lifeline.org</a>. In an emergency, call 911.</p>
+    <p>Trouble using this page? Email <a href="mailto:polaha@etsu.edu">polaha@etsu.edu</a> and we’ll fix it. Last reviewed <time datetime="2026-11">November 2026</time>.</p>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var month = document.getElementById('calc-month');
+  var mins = document.getElementById('calc-min');
+  var codesEl = document.getElementById('calc-codes');
+  var noteEl = document.getElementById('calc-note');
+
+  // Thresholds from the guide's time-based billing table.
+  var bands = {
+    initial:    { base: '99492', start: 36, addOns: [86, 116], cap: 145 },
+    subsequent: { base: '99493', start: 31, addOns: [76, 106], cap: 135 }
+  };
+
+  function update() {
+    var b = bands[month.value];
+    var m = parseInt(mins.value, 10);
+    var label = (month.value === 'initial' ? 'Initial' : 'Subsequent') + ' month';
+    if (isNaN(m) || m < 0) { codesEl.textContent = '—'; noteEl.textContent = 'Enter the total minutes for the month.'; return; }
+    label += ', ' + m + ' minute' + (m === 1 ? '' : 's') + '.';
+    if (m < 30) {
+      codesEl.textContent = 'Not yet billable';
+      noteEl.textContent = label + ' Keep tracking time through the end of the month.';
+    } else if (m < b.start) {
+      codesEl.textContent = 'G2214';
+      noteEl.textContent = label + ' Below the ' + b.base + ' threshold. G2214 may apply; verify payer rules.';
+    } else {
+      var units = b.addOns.filter(function (t) { return m >= t; }).length;
+      codesEl.textContent = b.base + (units ? ' + 99494' + (units > 1 ? ' ×' + units : '') : '');
+      noteEl.textContent = label + (m > b.cap ? ' Beyond the table’s range; check payer rules for additional units.' : '');
+    }
+  }
+  month.addEventListener('change', update);
+  mins.addEventListener('input', update);
+  update();
+
+  var btn = document.getElementById('copyBtn');
+  var email = document.getElementById('email');
+  btn.addEventListener('click', function () {
+    var done = function () { btn.textContent = 'Copied'; setTimeout(function () { btn.textContent = 'Copy email'; }, 1600); };
+    var fallback = function () {
+      var r = document.createRange(); r.selectNodeContents(email);
+      var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+      btn.textContent = 'Selected';
+    };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(email.textContent).then(done, fallback);
+    } else { fallback(); }
+  });
+
+  window.addEventListener('beforeprint', function () {
+    document.querySelectorAll('details').forEach(function (d) { d.open = true; });
+  });
+})();
+</script>
+
 </body>
 </html>
